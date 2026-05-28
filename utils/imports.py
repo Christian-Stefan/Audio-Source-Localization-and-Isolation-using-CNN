@@ -8,7 +8,7 @@ from torchinfo import summary
 from utils.assignment1_data.mnist_dataloader import create_dataloaders
 import argparse
 from torch.optim import (
-    SGD,RAdam
+    SGD,RAdam, Adam
 )
 from torch.nn import (
     BCELoss, MSELoss
@@ -19,3 +19,4 @@ import torchaudio
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 from torchcodec.decoders import AudioDecoder
+from torchscan import summary
