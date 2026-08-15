@@ -15,7 +15,7 @@ Before optimizing the CNN, the physical limitations of the acoustic environment 
 ### Spatial Quantization Limit
 Operating at a [sampling rate](https://en.wikipedia.org/wiki/Sampling_(signal_processing)) of 48kHz, the absolute theoretical threshold resolution limit was calculated to be **7.15 mm**[cite: 5]. If the sound source moves a distance smaller than this limit, the change in the time delay is just too brief to cross into an adjacent digital sample bucket, making movements less than 7.15 mm physically "invisible" to the model[cite: 5].
 
-![Time Delays Spatial Quantization](pictures/time_delays_calculations.png)
+![Time Delays Spatial Quantization](utils/results/time_delays_calculations.png)
 
 ### Effective Receptive Field
 Furthermore, the network's theoretical [Receptive Field](https://en.wikipedia.org/wiki/Receptive_field) was calculated to be 19[cite: 5]. However, experimental validation demonstrated a divergence from the linear assumption, proving instead that the effective radius grows proportionally to the square root of the depth ($\sigma \propto \sqrt{L}$)[cite: 5]. 
@@ -35,13 +35,13 @@ Without a shadow of a doubt, these figures prove the model can reliably track up
 ### Acoustic Volume vs. Localization Error
 A full simulation of continuous recordings revealed a dynamic correlation between sound volume (RMS) and estimation error[cite: 5]. By the book, there is often a strong inverse correlation between recording volume and localization error because louder sounds allow sensors to capture cleaner, stronger signals[cite: 5]. This statement held true in practice, though with nuanced variations: a visible positive correlation occasionally shifted to an inverse correlation depending on sudden RMS variations[cite: 5]. For instance, achieving a medium-height RMS peak of 0.22 at 1.6s led to a significant decrease in localization error, whereas a double-peak RMS body of 0.15 at 8.7s drastically increased the error[cite: 5]. This confirms that localization stability heavily depends upon how well the model is trained to handle sudden RMS variations over time[cite: 5].
 
-![Volume vs Error Correlation](pictures/Location%20error%20correlation%20with%20the%20sound%20volume.png)
+![Volume vs Error Correlation](utils/results/Location%20error%20correlation%20with%20the%20sound%20volume.png)
 
 ### Training Evolution (Single Source)
-![Loss 1 Source](pictures/loss_1source_cm.png)
+![Loss 1 Source](utils/results/The%20loss%20graph%20entailing%20train%20and%20validation%20losses%20-%20d.png)
 
 ### Overall Multi-Source Convergence
-![Overall Performance](pictures/overall%20performance.png)
+![Overall Performance](utils/results/The%20loss%20graph%20entailing%20the%20model%20performance%20evolution.png)
 
 ---
 
@@ -58,4 +58,4 @@ cd Your-Repository-Name-Here
 py -m pip install -r requirements.txt
 
 # Execute the main script
-py exercise_3.py
+py exercise_3.py --load
